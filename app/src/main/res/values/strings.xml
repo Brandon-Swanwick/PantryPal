@@ -3,13 +3,14 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Pantry Pal Home</string>
-    <string name="second_fragment_label">Grocery List</string>
-    <string name="previous">Previous</string>
+    <string name="second_fragment_label">Scan items</string>
+    <string name="third_fragment_label">Grocery List</string>
+    <string name="home">Home</string>
 
     <string name="hello_first_fragment">Hello World</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="F1_first_button_text">Scan</string>
-    <string name="F1_second_button_text">Create Grocery List</string>
-    <string name="F1_third_button_text">View Grocery List</string>
+    <string name="F1_second_button_text">Grocery List</string>
+    <string name="F1_third_button_text">View Pantry</string>
     <string name="Barcode_image_text">Barcode Image</string>
 </resources>
