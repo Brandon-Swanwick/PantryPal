@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ThirdFragment">
+    tools:context=".FourthFragment">
 
     <Button
-        android:id="@+id/button_second"
+        android:id="@+id/button_first"
         android:layout_width="250dp"
         android:layout_height="80dp"
         android:layout_marginBottom="176dp"

@@ -30,7 +30,7 @@
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_third"
         android:layout_width="250dp"
         android:layout_height="80dp"
         android:text="@string/F1_third_button_text"
