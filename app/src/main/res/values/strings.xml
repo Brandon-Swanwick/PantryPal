@@ -8,7 +8,8 @@
 
     <string name="hello_first_fragment">Hello World</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="first_button_text">Scan</string>
-    <string name="second_button_text">Create Grocery List</string>
-    <string name="third_button_text">View Grocery List</string>
+    <string name="F1_first_button_text">Scan</string>
+    <string name="F1_second_button_text">Create Grocery List</string>
+    <string name="F1_third_button_text">View Grocery List</string>
+    <string name="Barcode_image_text">Barcode Image</string>
 </resources>
