@@ -4,11 +4,11 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Pantry Pal Home</string>
     <string name="second_fragment_label">Grocery List</string>
-    <string name="next">Next</string>
     <string name="previous">Previous</string>
 
     <string name="hello_first_fragment">Hello World</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="toast_button_text">Toast</string>
-    <string name="count_button_text">Count</string>
+    <string name="first_button_text">Scan</string>
+    <string name="second_button_text">Create Grocery List</string>
+    <string name="third_button_text">View Grocery List</string>
 </resources>
