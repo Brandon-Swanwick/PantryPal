@@ -18,6 +18,9 @@ import com.example.pantrypal.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import productPack.myProduct;
+import productPack.myProductList;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
