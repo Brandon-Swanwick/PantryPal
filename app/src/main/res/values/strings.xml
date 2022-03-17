@@ -10,8 +10,13 @@
     <string name="barcode_text_box">Barcode Number</string>
     <string name="barcode_input_hint">Please enter the barecode</string>
 
+
     <string name="F1_first_button_text">Scan</string>
     <string name="F1_second_button_text">Grocery List</string>
     <string name="F1_third_button_text">View Pantry</string>
     <string name="Barcode_image_text">Barcode Image</string>
+
+    <string name="submit_button">Submit Entry</string>
+    <string name="product_title">Product Title</string>
+    <string name="product_barcode">Product Barcode</string>
 </resources>

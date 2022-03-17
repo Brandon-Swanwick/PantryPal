@@ -5,25 +5,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+
 import com.example.pantrypal.databinding.FragmentSecondBinding;
-import java.net.MalformedURLException;
-import java.net.URL;
-import productPack.jsonParser;
+
+import java.util.ArrayList;
+
+import productPack.Product;
 
 
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
-    EditText editTextNumber;
-    String apiCallpt1 = "https://api.barcodelookup.com/v3/products?barcode=";
-    String apiCallpt2;
-    String apiCallpt3 = "&formatted=y&key=vxn37no3fnetzu59kum8nkqomj3j7p";
-    String finalapiCall;
-    URL url;
+
+    public EditText inputText;
+    public String apiCallpt1 = "https://api.barcodelookup.com/v3/products?barcode=";
+    public String apiCallpt2;
+    public String apiCallpt3 = "&formatted=y&key=vxn37no3fnetzu59kum8nkqomj3j7p";
+    public String finalapiCall;
 
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -38,23 +41,29 @@ public class SecondFragment extends Fragment {
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getContext(),"You Clicked on home",Toast.LENGTH_SHORT).show();
                 NavHostFragment.findNavController(SecondFragment.this)
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);
+
             }
         });
 
-        binding.editTextNumber.setOnClickListener(new View.OnClickListener() {
+
+        binding.editText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editTextNumber = getActivity().findViewById(R.id.editTextNumber);
-                apiCallpt2 = editTextNumber.getText().toString();
+
+                inputText = view.findViewById(R.id.editText);
+                apiCallpt2 = inputText.getText().toString();
                 finalapiCall = apiCallpt1 + apiCallpt2 + apiCallpt3;
-                try {
-                    URL url = new URL(finalapiCall);
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-                new jsonParser(url);
+
+//                Product tempProduct = new Product(finalapiCall);
+
+
+                Toast.makeText(getContext(),"following api is " + finalapiCall, Toast.LENGTH_LONG).show();
+//                Toast.makeText(getContext(),"following api is " + finalapiCall, Toast.LENGTH_LONG).show();
+//                Toast.makeText(getContext(),"You entered " + inputText.getText().toString(),Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(),"returned Title: " + tempProduct.getTitle(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -66,3 +75,4 @@ public class SecondFragment extends Fragment {
     }
 
 }
+
