@@ -15,7 +15,7 @@ import com.example.pantrypal.databinding.FragmentSecondBinding;
 
 import java.util.ArrayList;
 
-import productPack.Product;
+import productPack.EntryInfo;
 
 
 public class SecondFragment extends Fragment {
@@ -28,9 +28,13 @@ public class SecondFragment extends Fragment {
     public String apiCallpt3 = "&formatted=y&key=vxn37no3fnetzu59kum8nkqomj3j7p";
     public String finalapiCall;
 
+    ArrayList<EntryInfo> currentList = new ArrayList<>();
+
+
+
     @Override
-    public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
+    public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -49,6 +53,13 @@ public class SecondFragment extends Fragment {
         });
 
 
+        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Title of product is "+ currentList.get(0).getDataObj().products[0].title, Toast.LENGTH_LONG).show();
+            }
+        });
+
         binding.editText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,16 +67,13 @@ public class SecondFragment extends Fragment {
                 inputText = view.findViewById(R.id.editText);
                 apiCallpt2 = inputText.getText().toString();
                 finalapiCall = apiCallpt1 + apiCallpt2 + apiCallpt3;
-
-//                Product tempProduct = new Product(finalapiCall);
-
-
-                Toast.makeText(getContext(),"following api is " + finalapiCall, Toast.LENGTH_LONG).show();
-//                Toast.makeText(getContext(),"following api is " + finalapiCall, Toast.LENGTH_LONG).show();
-//                Toast.makeText(getContext(),"You entered " + inputText.getText().toString(),Toast.LENGTH_SHORT).show();
-//                Toast.makeText(getContext(),"returned Title: " + tempProduct.getTitle(), Toast.LENGTH_LONG).show();
+                EntryInfo tempEntry = new EntryInfo(finalapiCall);
+                currentList.add(tempEntry);
+//                Toast.makeText(getContext(), "data is "+ tempEntry.getData(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(getContext(), "title is " + tempEntryInfo.getValue().products[0].title, Toast.LENGTH_LONG).show();
             }
         });
+//        Toast.makeText(getContext(), "data is "+ currentList.get(0).getData(), Toast.LENGTH_LONG).show();
     }
 
     @Override

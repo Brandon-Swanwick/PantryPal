@@ -15,7 +15,7 @@
     <string name="F1_second_button_text">Grocery List</string>
     <string name="F1_third_button_text">View Pantry</string>
     <string name="Barcode_image_text">Barcode Image</string>
-
+    <string name="test_button_text">Generate</string>
     <string name="submit_button">Submit Entry</string>
     <string name="product_title">Product Title</string>
     <string name="product_barcode">Product Barcode</string>
