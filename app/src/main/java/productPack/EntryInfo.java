@@ -11,7 +11,6 @@ import java.net.URL;
 
 public class EntryInfo {
 
-    private String commit;
     private String data ="";
     private RootObject value;
 
