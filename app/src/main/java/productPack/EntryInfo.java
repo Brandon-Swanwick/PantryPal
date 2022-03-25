@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class EntryInfo {
 
-    private String data;
+    private String data ="";
     private RootObject value;
 
     public EntryInfo(String apiCall) {
@@ -117,7 +117,7 @@ public class EntryInfo {
             public void run() {
 
                 try {
-                    data = "{\n" +
+                    String dataTemp = "{\n" +
                             "    \"products\": [\n" +
                             "        {\n" +
                             "            \"barcode_number\": \"811660022826\",\n" +
@@ -226,13 +226,13 @@ public class EntryInfo {
                             "    ]\n" +
                             "}";
 
-//                    URL url = new URL(apiCall);
-//                    BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-//                    String str = "";
+                    URL url = new URL(apiCall);
+                    BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+                    String str = "";
 
-//                    while (null != (str = br.readLine())) {
-//                        data += str;
-//                    }
+                    while (null != (str = br.readLine())) {
+                        data += str;
+                    }
 
                     Log.d("dataT", "1.__Imported List" + data);
 //                    br.close();
@@ -259,6 +259,7 @@ public class EntryInfo {
 //                    System.out.println("Entire Response:");
 //                    System.out.println(data);
 
+                    br.close();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                     Log.d("tried", "Failed try catch");
