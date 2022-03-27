@@ -1,6 +1,8 @@
 package com.example.pantrypal;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,15 +27,16 @@ public class SecondFragment extends Fragment {
     public EditText inputText;
     public String apiCallpt1 = "https://api.barcodelookup.com/v3/products?barcode=";
     public String apiCallpt2;
-    public String apiCallpt3 = "&formatted=y&key=vxn37no3fnetzu59kum8nkqomj3j7p";
+    public String apiCallpt3 = "&formatted=y&key=elpbe6u5zexop902y2iyxdfu11t0o2";
     public String finalapiCall;
+    public Activity act = getActivity();
+    private ArrayList<EntryInfo> tempList = new ArrayList<>();
 
-    ArrayList<EntryInfo> currentList = new ArrayList<>();
 
 
 
     @Override
-    public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         return binding.getRoot();
@@ -41,38 +44,39 @@ public class SecondFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        binding.buttonFirst.setOnClickListener(view1 -> {
+            Toast.makeText(getContext(),"You Clicked on home",Toast.LENGTH_SHORT).show();
+            NavHostFragment.findNavController(SecondFragment.this)
+                    .navigate(R.id.action_SecondFragment_to_FirstFragment);
 
-        binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getContext(),"You Clicked on home",Toast.LENGTH_SHORT).show();
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-
-            }
         });
 
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getContext(), "Title of product is "+ currentList.get(0).getDataObj().products[0].title, Toast.LENGTH_LONG).show();
+        binding.buttonSecond.setOnClickListener(view12 -> {
+            if (act != null){
+               tempList = ((MainActivity) act).getScanList();
+                Log.d("mere", "title from copied list from main is " + tempList.get(0).getDataObj().products[0].title);
             }
+            else
+                Log.d("mere1", "act == null");
+//            if (tempList.get(tempList.size()-1).getDataObj() != null) {
+//                Toast.makeText(getContext(), "product with found with barcode", Toast.LENGTH_LONG).show();
+//            }
+//            else
+//                Toast.makeText(getContext(), "product not found with barcode", Toast.LENGTH_LONG).show();
+//                ((MainActivity) act).removeEntry(((MainActivity) act).getScanList().size()-1);
         });
 
-        binding.editText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        binding.editText.setOnClickListener(view13 -> {
 
-                inputText = view.findViewById(R.id.editText);
-                apiCallpt2 = inputText.getText().toString();
-                finalapiCall = apiCallpt1 + apiCallpt2 + apiCallpt3;
-                EntryInfo tempEntry = new EntryInfo(finalapiCall);
-                currentList.add(tempEntry);
-//                Toast.makeText(getContext(), "data is "+ tempEntry.getData(), Toast.LENGTH_LONG).show();
-//                Toast.makeText(getContext(), "title is " + tempEntryInfo.getValue().products[0].title, Toast.LENGTH_LONG).show();
+            inputText = view13.findViewById(R.id.editText);
+            apiCallpt2 = inputText.getText().toString();
+            finalapiCall = apiCallpt1 + apiCallpt2 + apiCallpt3;
+            EntryInfo tempEntry = new EntryInfo(finalapiCall);
+            if (act != null) {
+                Log.d("xd1212", "act is != NULL");
+                ((MainActivity) act).addEntry(tempEntry);
             }
         });
-//        Toast.makeText(getContext(), "data is "+ currentList.get(0).getData(), Toast.LENGTH_LONG).show();
     }
 
     @Override

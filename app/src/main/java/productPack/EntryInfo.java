@@ -235,38 +235,17 @@ public class EntryInfo {
                     }
 
                     Log.d("dataT", "1.__Imported List" + data);
-//                    br.close();
+                    br.close();
 
                     Gson g = new Gson();
                     value = g.fromJson(data, RootObject.class);
 
-//                    int maxLogSize = 10000;
-//                    for (int i = 0; i <= data.length() / maxLogSize; i++) {
-//                        int start = i * maxLogSize;
-//                        int end = (i + 1) * maxLogSize;
-//                        end = end > data.length() ? data.length() : end;
-//                        android.util.Log.d("DataT1", data.substring(start, end));
-//                    }
-
-//                    String barcode = value.products[0].barcode_number;
-//                    System.out.print("Barcode Number: ");
-//                    System.out.println(barcode);
-//
-//                    String name = value.products[0].title;
-//                    System.out.print("Title: ");
-//                    System.out.println(name);
-//
-//                    System.out.println("Entire Response:");
-//                    System.out.println(data);
-
-                    br.close();
                 } catch (Exception ex) {
                     ex.printStackTrace();
+                    value = null;
                     Log.d("tried", "Failed try catch");
                 }
 
-//                Log.d("titleC",value.products[0].title);
-//                Log.d("colorc", value.products[0].color);
             }
         });
         thread.start();
