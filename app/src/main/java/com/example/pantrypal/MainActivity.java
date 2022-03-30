@@ -12,29 +12,12 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.pantrypal.databinding.ActivityMainBinding;
 
-import java.util.ArrayList;
-
-import productPack.EntryInfo;
-
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
-    private ArrayList<EntryInfo> scanList = new ArrayList<>();
-
-    public void addEntry(EntryInfo tempEntry){
-        scanList.add(tempEntry);
-    }
-
-    public void removeEntry(int index){
-        scanList.remove(index);
-    }
-
-    public ArrayList<EntryInfo> getScanList(){
-        return scanList;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

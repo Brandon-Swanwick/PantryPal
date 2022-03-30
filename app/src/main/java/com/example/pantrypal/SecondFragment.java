@@ -29,11 +29,9 @@ public class SecondFragment extends Fragment {
     public String apiCallpt2;
     public String apiCallpt3 = "&formatted=y&key=elpbe6u5zexop902y2iyxdfu11t0o2";
     public String finalapiCall;
-    public Activity act = getActivity();
+
     private ArrayList<EntryInfo> tempList = new ArrayList<>();
-
-
-
+    EntryInfo tempEntry;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,18 +50,14 @@ public class SecondFragment extends Fragment {
         });
 
         binding.buttonSecond.setOnClickListener(view12 -> {
-            if (act != null){
-               tempList = ((MainActivity) act).getScanList();
-                Log.d("mere", "title from copied list from main is " + tempList.get(0).getDataObj().products[0].title);
+            if (tempEntry.getDataObj() != null){
+                Toast.makeText(getContext(),"product was found in database", Toast.LENGTH_LONG).show();
+                tempList.add(tempEntry);
+                Toast.makeText(getContext(),"Title of most recent product" + tempList.get(tempList.size()-1).getDataObj().products[0].title,Toast.LENGTH_SHORT).show();
             }
             else
-                Log.d("mere1", "act == null");
-//            if (tempList.get(tempList.size()-1).getDataObj() != null) {
-//                Toast.makeText(getContext(), "product with found with barcode", Toast.LENGTH_LONG).show();
-//            }
-//            else
-//                Toast.makeText(getContext(), "product not found with barcode", Toast.LENGTH_LONG).show();
-//                ((MainActivity) act).removeEntry(((MainActivity) act).getScanList().size()-1);
+                Toast.makeText(getContext(),"product was NOT found in database", Toast.LENGTH_LONG).show();
+//            Toast.makeText(getContext(),"Title of most recent product" + tempList.get(tempList.size()-1).getDataObj().products[0].title,Toast.LENGTH_SHORT).show();
         });
 
         binding.editText.setOnClickListener(view13 -> {
@@ -71,11 +65,7 @@ public class SecondFragment extends Fragment {
             inputText = view13.findViewById(R.id.editText);
             apiCallpt2 = inputText.getText().toString();
             finalapiCall = apiCallpt1 + apiCallpt2 + apiCallpt3;
-            EntryInfo tempEntry = new EntryInfo(finalapiCall);
-            if (act != null) {
-                Log.d("xd1212", "act is != NULL");
-                ((MainActivity) act).addEntry(tempEntry);
-            }
+            tempEntry = new EntryInfo(finalapiCall);
         });
     }
 
