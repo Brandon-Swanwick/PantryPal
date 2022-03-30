@@ -21,7 +21,7 @@ import productPack.EntryInfo;
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
-
+    //yeet
     public EditText inputText;
     public String apiCallpt1 = "https://api.barcodelookup.com/v3/products?barcode=";
     public String apiCallpt2;
