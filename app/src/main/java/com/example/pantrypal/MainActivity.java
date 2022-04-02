@@ -12,12 +12,22 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.pantrypal.databinding.ActivityMainBinding;
 
+import java.util.ArrayList;
+
+import productPack.EntryInfo;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
+//
+    private SharedViewModel scannedViewModel;
+    private SharedViewModel groceryViewModel;
+
+
+//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +39,21 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+
+
+        //
+            scannedViewModel = new SharedViewModel();
+            groceryViewModel = new SharedViewModel();
+        //
+    }
+
+
+    public void updateScannedList(ArrayList<EntryInfo> scannedList){
+        scannedViewModel.setList(scannedList);
+    }
+
+    public ArrayList<EntryInfo> getScannedList(){
+        return scannedViewModel.getList();
     }
 
     @Override

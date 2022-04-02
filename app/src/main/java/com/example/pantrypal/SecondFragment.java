@@ -1,5 +1,6 @@
 package com.example.pantrypal;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,14 +21,19 @@ import productPack.EntryInfo;
 
 public class SecondFragment extends Fragment {
 
+    // Used for linking fragments to activity
     private FragmentSecondBinding binding;
-    //hello
+
+    // variables for view model (communication for fragment -> fragment)
+
+    // variables used for setting up get req from API
     public EditText inputText;
     public String apiCallpt1 = "https://api.barcodelookup.com/v3/products?barcode=";
     public String apiCallpt2;
     public String apiCallpt3 = "&formatted=y&key=elpbe6u5zexop902y2iyxdfu11t0o2";
     public String finalapiCall;
 
+    // scanned products list (updated on success from API get req, otherwise no entry is added
     private ArrayList<EntryInfo> tempList = new ArrayList<>();
     EntryInfo tempEntry;
 
@@ -40,8 +46,17 @@ public class SecondFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         binding.buttonFirst.setOnClickListener(view1 -> {
             Toast.makeText(getContext(),"You Clicked on home",Toast.LENGTH_SHORT).show();
+
+            Activity act = getActivity();
+            if (act instanceof MainActivity){
+                ((MainActivity) act).updateScannedList(tempList);
+                Toast.makeText(getContext(),"sent temp list to main",Toast.LENGTH_SHORT).show();
+            }
+
+
             NavHostFragment.findNavController(SecondFragment.this)
                     .navigate(R.id.action_SecondFragment_to_FirstFragment);
 
@@ -54,8 +69,7 @@ public class SecondFragment extends Fragment {
                 Toast.makeText(getContext(),"Title of most recent product" + tempList.get(tempList.size()-1).getDataObj().products[0].title,Toast.LENGTH_SHORT).show();
             }
             else
-                Toast.makeText(getContext(),"product was NOT found in database", Toast.LENGTH_LONG).show();
-//            Toast.makeText(getContext(),"Title of most recent product" + tempList.get(tempList.size()-1).getDataObj().products[0].title,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"product was NOT found in database, Failed to add entry", Toast.LENGTH_LONG).show();
         });
 
         binding.editText.setOnClickListener(view13 -> {
