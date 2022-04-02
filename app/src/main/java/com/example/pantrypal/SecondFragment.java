@@ -63,7 +63,11 @@ public class SecondFragment extends Fragment {
         });
 
         binding.buttonSecond.setOnClickListener(view12 -> {
-            if (tempEntry.getDataObj() != null){
+
+            if(tempEntry == null){
+                Toast.makeText(getContext(),"You must enter a barcode first", Toast.LENGTH_LONG).show();
+            }
+            else if (tempEntry.getDataObj() != null){
                 Toast.makeText(getContext(),"product was found in database", Toast.LENGTH_LONG).show();
                 tempList.add(tempEntry);
                 Toast.makeText(getContext(),"Title of most recent product" + tempList.get(tempList.size()-1).getDataObj().products[0].title,Toast.LENGTH_SHORT).show();
@@ -73,11 +77,15 @@ public class SecondFragment extends Fragment {
         });
 
         binding.editText.setOnClickListener(view13 -> {
-
             inputText = view13.findViewById(R.id.editText);
-            apiCallpt2 = inputText.getText().toString();
-            finalapiCall = apiCallpt1 + apiCallpt2 + apiCallpt3;
-            tempEntry = new EntryInfo(finalapiCall);
+            if (inputText.getText().toString().matches("")){
+                Toast.makeText(getContext(),"Invalid Entry please enter barcode", Toast.LENGTH_LONG).show();
+            }
+            else{
+                apiCallpt2 = inputText.getText().toString();
+                finalapiCall = apiCallpt1 + apiCallpt2 + apiCallpt3;
+                tempEntry = new EntryInfo(finalapiCall);
+            }
         });
     }
 
