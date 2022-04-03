@@ -2,64 +2,85 @@ package com.example.pantrypal;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pantrypal.databinding.FragmentSecondBinding;
 import com.example.pantrypal.databinding.FragmentThirdBinding;
 
 import java.util.ArrayList;
 
 import productPack.EntryInfo;
 
+
 public class ThirdFragment extends Fragment {
 
+    // Used for linking fragments to activity
     private FragmentThirdBinding binding;
-    public TextView groceryList;
 
-    private ArrayList<EntryInfo> scannedList;
+
+    private ArrayList<String> productNames;
+    private ArrayList<String> productImages;
+
+    private RecyclerViewAdapter adapter;
+    private RecyclerView recyclerView;
+
+    private static final String TAG = "ThirdFragment";
+
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
-
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentThirdBinding.inflate(inflater, container, false);
-        return binding.getRoot();
+        View view = inflater.inflate(R.layout.fragment_third,container,false);
+
+        productImages = new ArrayList<>();
+        productNames = new ArrayList<>();
+
+        initImageBitmaps();
+
+        recyclerView = view.findViewById(R.id.recycler_view);
+
+        adapter = new RecyclerViewAdapter(view.getContext(),productImages,productNames);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
+        return view;
+
 
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    public void initImageBitmaps() {
+        Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
         Activity act = getActivity();
-        if (act instanceof MainActivity){
-            scannedList = ((MainActivity) act).getScannedList();
-            if (!scannedList.isEmpty()) {
-                Toast.makeText(getContext(), "List gathered from main is " + scannedList.get(0).getDataObj().products[0].title, Toast.LENGTH_SHORT).show();
+        if (act instanceof MainActivity) {
+            for (int i = 0; i < ((MainActivity) act).getScannedList().size(); ++i) {
+                productNames.add(((MainActivity) act).getScannedList().get(i).getDataObj().products[0].title);
+                productImages.add(((MainActivity) act).getScannedList().get(i).getDataObj().products[0].images[0]);
+                Log.d(TAG, "image barcode is "+ ((MainActivity) act).getScannedList().get(i).getDataObj().products[0].images[0]);
             }
-            else
-                Toast.makeText(getContext(), "Empty list was passed from main activity", Toast.LENGTH_SHORT).show();
         }
-
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_FirstFragment);
-            }
-        });
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+
+        @Override
+        public void onDestroyView () {
+            super.onDestroyView();
+            binding = null;
+        }
     }
 
-}

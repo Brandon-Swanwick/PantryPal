@@ -226,19 +226,19 @@ public class EntryInfo {
                             "    ]\n" +
                             "}";
 
-                    URL url = new URL(apiCall);
-                    BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-                    String str = "";
-
-                    while (null != (str = br.readLine())) {
-                        data += str;
-                    }
-
-                    Log.d("dataT", "1.__Imported List" + data);
-                    br.close();
+//                    URL url = new URL(apiCall);
+//                    BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+//                    String str = "";
+//
+//                    while (null != (str = br.readLine())) {
+//                        data += str;
+//                    }
+//
+//                    Log.d("dataT", "1.__Imported List" + data);
+//                    br.close();
 
                     Gson g = new Gson();
-                    value = g.fromJson(data, RootObject.class);
+                    value = g.fromJson(dataTemp, RootObject.class);
 
                 } catch (Exception ex) {
                     ex.printStackTrace();

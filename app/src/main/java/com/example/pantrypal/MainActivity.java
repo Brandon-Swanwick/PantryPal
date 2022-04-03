@@ -1,6 +1,7 @@
 package com.example.pantrypal;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -19,15 +20,19 @@ import productPack.EntryInfo;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
+
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
-//
+    // viewModel classes
     private SharedViewModel scannedViewModel;
     private SharedViewModel groceryViewModel;
 
+    // variables for adapter
 
-//
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +44,14 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        //
+        scannedViewModel = new SharedViewModel();
+        groceryViewModel = new SharedViewModel();
+        //
+
+        Log.d(TAG, "onCreate in Main Act: started");
 
 
-        //
-            scannedViewModel = new SharedViewModel();
-            groceryViewModel = new SharedViewModel();
-        //
     }
 
 

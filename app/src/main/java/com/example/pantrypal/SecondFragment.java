@@ -53,7 +53,10 @@ public class SecondFragment extends Fragment {
             Activity act = getActivity();
             if (act instanceof MainActivity){
                 ((MainActivity) act).updateScannedList(tempList);
-                Toast.makeText(getContext(),"sent temp list to main",Toast.LENGTH_SHORT).show();
+                if (!tempList.isEmpty()){
+                    Toast.makeText(getContext(),"sent temp list to main",Toast.LENGTH_SHORT).show();
+                }
+                Toast.makeText(getContext(),"sent no new list to main",Toast.LENGTH_SHORT).show();
             }
 
 
