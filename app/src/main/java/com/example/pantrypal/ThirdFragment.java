@@ -49,14 +49,14 @@ public class ThirdFragment extends Fragment {
         initImageBitmaps();
 
         recyclerView = view.findViewById(R.id.recycler_view);
-
         adapter = new RecyclerViewAdapter(view.getContext(),productImages,productNames);
+
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
+        Log.d(TAG, "onCreateView: within fragment 3 is called");
+
         return view;
-
-
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -75,7 +75,6 @@ public class ThirdFragment extends Fragment {
             }
         }
     }
-
 
         @Override
         public void onDestroyView () {

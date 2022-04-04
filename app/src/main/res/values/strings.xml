@@ -2,18 +2,18 @@
     <string name="app_name">Pantry Pal</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">Pantry Pal Home</string>
+    <string name="first_fragment_label">Home</string>
     <string name="second_fragment_label">Scan Items</string>
-    <string name="third_fragment_label">Grocery List</string>
-    <string name="fourth_fragment_label">View Pantry</string>
+    <string name="third_fragment_label">View Pantry</string>
+    <string name="fourth_fragment_label">Grocery List</string>
     <string name="home">Home</string>
     <string name="barcode_text_box">Barcode Number</string>
-    <string name="barcode_input_hint">Please enter the barecode</string>
+    <string name="barcode_input_hint">Please enter a barcode</string>
 
 
     <string name="F1_first_button_text">Scan</string>
-    <string name="F1_second_button_text">Grocery List</string>
-    <string name="F1_third_button_text">View Pantry</string>
+    <string name="F1_second_button_text">View Pantry</string>
+    <string name="F1_third_button_text">Grocery List</string>
     <string name="Barcode_image_text">Barcode Image</string>
     <string name="test_button_text">Submit</string>
     <string name="submit_button">Submit Entry</string>
