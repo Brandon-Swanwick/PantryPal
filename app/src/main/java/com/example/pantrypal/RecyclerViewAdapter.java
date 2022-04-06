@@ -2,6 +2,7 @@ package com.example.pantrypal;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,6 +64,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Log.d(TAG, "onClick: clicked on " + productNames.get(position));
 
                 Toast.makeText(mContext, productNames.get(position),Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(mContext, DetailedActivity.class);
+                intent.putExtra("image_url",productImages.get(position));
+                intent.putExtra("image_name", productNames.get(position));
+                mContext.startActivity(intent);
             }
         });
 

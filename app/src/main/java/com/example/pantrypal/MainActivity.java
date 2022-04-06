@@ -50,10 +50,7 @@ public class MainActivity extends AppCompatActivity {
         //
 
         Log.d(TAG, "onCreate in Main Act: started");
-
-
     }
-
 
     public void updateScannedList(ArrayList<EntryInfo> scannedList){
         scannedViewModel.setList(scannedList);

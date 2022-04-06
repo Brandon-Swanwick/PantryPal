@@ -48,7 +48,7 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.buttonFirst.setOnClickListener(view1 -> {
-            Toast.makeText(getContext(),"You Clicked on home",Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getContext(),"You Clicked on home",Toast.LENGTH_SHORT).show();
 
             Activity act = getActivity();
             if (act instanceof MainActivity){
@@ -56,9 +56,10 @@ public class SecondFragment extends Fragment {
                 if (!tempList.isEmpty()){
                     Toast.makeText(getContext(),"sent temp list to main",Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(getContext(),"sent no new list to main",Toast.LENGTH_SHORT).show();
+                else{
+                    Toast.makeText(getContext(),"sent no new list to main",Toast.LENGTH_SHORT).show();
+                }
             }
-
 
             NavHostFragment.findNavController(SecondFragment.this)
                     .navigate(R.id.action_SecondFragment_to_FirstFragment);
@@ -73,7 +74,7 @@ public class SecondFragment extends Fragment {
             else if (tempEntry.getDataObj() != null){
                 Toast.makeText(getContext(),"product was found in database", Toast.LENGTH_LONG).show();
                 tempList.add(tempEntry);
-                Toast.makeText(getContext(),"Title of most recent product" + tempList.get(tempList.size()-1).getDataObj().products[0].title,Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(),"Title of most recent product" + tempList.get(tempList.size()-1).getDataObj().products[0].title,Toast.LENGTH_SHORT).show();
             }
             else
                 Toast.makeText(getContext(),"product was NOT found in database, Failed to add entry", Toast.LENGTH_LONG).show();
