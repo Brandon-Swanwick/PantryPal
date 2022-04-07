@@ -1,11 +1,14 @@
 <resources>
     <string name="app_name">Pantry Pal</string>
     <string name="action_settings">Settings</string>
+
     <!-- Strings used for fragments for navigation -->
+
     <string name="first_fragment_label">Home</string>
     <string name="second_fragment_label">Scan Items</string>
     <string name="third_fragment_label">View Pantry</string>
     <string name="fourth_fragment_label">Grocery List</string>
+    <string name="detailed_view">Detailed Product View</string>
     <string name="home">Home</string>
     <string name="barcode_text_box">Barcode Number</string>
     <string name="barcode_input_hint">Please enter a barcode</string>

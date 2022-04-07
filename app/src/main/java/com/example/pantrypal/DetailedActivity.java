@@ -27,18 +27,19 @@ public class DetailedActivity extends AppCompatActivity {
         if(getIntent().hasExtra("image_url") && getIntent().hasExtra("image_name")){
             Log.d(TAG, "getIncomingIntent: found intent extras");
 
-            String imageUrl= getIntent().getStringExtra("image_url");
-            String productName = getIntent().getStringExtra("image_name");
+            String imageUrl = getIntent().getStringExtra("image_url");
+//            String productName = getIntent().getStringExtra("image_name");
+            String productInfoString = getIntent().getStringExtra("entry_info");
 
-            setImage(imageUrl,productName);
+            setImage(imageUrl,productInfoString);
         }
     }
 
-    private void setImage(String imageUrl, String productName){
+    private void setImage(String imageUrl, String productInfoString){
         Log.d(TAG, "setImage: setting the image and name to widgets.");
 
         TextView name = findViewById(R.id.product_details);
-        name.setText(productName);
+        name.setText(productInfoString);
 
         ImageView image = findViewById(R.id.image);
         Glide.with(this)

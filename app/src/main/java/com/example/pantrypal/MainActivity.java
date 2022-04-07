@@ -14,7 +14,6 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.pantrypal.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
-
 import productPack.EntryInfo;
 
 

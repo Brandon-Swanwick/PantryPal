@@ -32,6 +32,10 @@ public class ThirdFragment extends Fragment {
     private ArrayList<String> productNames;
     private ArrayList<String> productImages;
 
+    //
+    private ArrayList<String> productInfoString;
+
+
     private RecyclerViewAdapter adapter;
     private RecyclerView recyclerView;
 
@@ -46,10 +50,12 @@ public class ThirdFragment extends Fragment {
         productImages = new ArrayList<>();
         productNames = new ArrayList<>();
 
+        productInfoString = new ArrayList<>();
+
         initImageBitmaps();
 
         recyclerView = view.findViewById(R.id.recycler_view);
-        adapter = new RecyclerViewAdapter(view.getContext(),productImages,productNames);
+        adapter = new RecyclerViewAdapter(view.getContext(),productImages,productNames, productInfoString);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
@@ -71,6 +77,13 @@ public class ThirdFragment extends Fragment {
             for (int i = 0; i < ((MainActivity) act).getScannedList().size(); ++i) {
                 productNames.add(((MainActivity) act).getScannedList().get(i).getDataObj().products[0].title);
                 productImages.add(((MainActivity) act).getScannedList().get(i).getDataObj().products[0].images[0]);
+
+
+                productInfoString.add("Title: " +((MainActivity) act).getScannedList().get(i).getDataObj().products[0].title
+                        + "\n\nBrand: " + ((MainActivity) act).getScannedList().get(i).getDataObj().products[0].brand
+                        + "\n\nBarcode Number: " + ((MainActivity) act).getScannedList().get(i).getDataObj().products[0].barcode_number);
+
+
                 Log.d(TAG, "image barcode is "+ ((MainActivity) act).getScannedList().get(i).getDataObj().products[0].images[0]);
             }
         }

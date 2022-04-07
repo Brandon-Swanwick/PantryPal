@@ -30,13 +30,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     // mImageNames
     private ArrayList<String> productNames = new ArrayList<>();
+
+    // context
     private Context mContext;
 
+    // info string
+    private ArrayList<String> productInfoString = new ArrayList<>();
 
-    public RecyclerViewAdapter(Context mContext, ArrayList<String> productImages, ArrayList<String> productNames) {
+    public RecyclerViewAdapter(Context mContext, ArrayList<String> productImages, ArrayList<String> productNames, ArrayList<String> productInfoString) {
         this.productImages = productImages;
         this.productNames = productNames;
         this.mContext = mContext;
+        this.productInfoString = productInfoString;
     }
 
     @NonNull
@@ -68,6 +73,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Intent intent = new Intent(mContext, DetailedActivity.class);
                 intent.putExtra("image_url",productImages.get(position));
                 intent.putExtra("image_name", productNames.get(position));
+                intent.putExtra("entry_info", productInfoString.get(position));
                 mContext.startActivity(intent);
             }
         });
