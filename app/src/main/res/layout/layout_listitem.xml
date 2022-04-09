@@ -14,14 +14,15 @@
         android:src="@mipmap/ic_launcher" />
 
     <TextView
+        android:id="@+id/product_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/product_title"
-        android:id="@+id/product_name"
-        android:layout_toEndOf="@+id/image"
-        android:textColor="@color/black"
         android:layout_centerVertical="true"
         android:layout_marginStart="30dp"
-        android:textSize="17sp"/>
+        android:layout_toEndOf="@+id/image"
+        android:fontFamily="sans-serif"
+        android:text="@string/product_title"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
 
 </RelativeLayout>

@@ -1,7 +1,10 @@
 package com.example.pantrypal;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,8 +13,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
+
+import productPack.EntryInfo;
+
 public class DetailedActivity extends AppCompatActivity {
     private static final String TAG = "Detailed Activity ";
+
+    private ArrayList<EntryInfo> tempGroceryList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,18 +29,18 @@ public class DetailedActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: started");
 
         getIncomingIntent();
+
     }
 
     private void getIncomingIntent(){
         Log.d(TAG, "getIncomingIntent: checking for incoming intents");
-        if(getIntent().hasExtra("image_url") && getIntent().hasExtra("image_name")){
+        if(getIntent().hasExtra("image_url") && getIntent().hasExtra("entry_info")) {
             Log.d(TAG, "getIncomingIntent: found intent extras");
 
             String imageUrl = getIntent().getStringExtra("image_url");
-//            String productName = getIntent().getStringExtra("image_name");
             String productInfoString = getIntent().getStringExtra("entry_info");
 
-            setImage(imageUrl,productInfoString);
+            setImage(imageUrl, productInfoString);
         }
     }
 

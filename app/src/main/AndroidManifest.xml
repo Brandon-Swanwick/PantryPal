@@ -21,7 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailedActivity" />
+        <activity
+            android:name=".DetailedActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PantryPal.NoActionBar" />
     </application>
 
 </manifest>

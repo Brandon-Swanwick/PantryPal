@@ -28,14 +28,11 @@ public class ThirdFragment extends Fragment {
     // Used for linking fragments to activity
     private FragmentThirdBinding binding;
 
-
     private ArrayList<String> productNames;
     private ArrayList<String> productImages;
 
     //
     private ArrayList<String> productInfoString;
-
-
     private RecyclerViewAdapter adapter;
     private RecyclerView recyclerView;
 
@@ -52,10 +49,14 @@ public class ThirdFragment extends Fragment {
 
         productInfoString = new ArrayList<>();
 
+
+
         initImageBitmaps();
 
         recyclerView = view.findViewById(R.id.recycler_view);
-        adapter = new RecyclerViewAdapter(view.getContext(),productImages,productNames, productInfoString);
+        Activity act = getActivity();
+
+        adapter = new RecyclerViewAdapter(view.getContext(), productImages,productNames, productInfoString , ((MainActivity) act));
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
@@ -68,6 +69,7 @@ public class ThirdFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
+
 
     public void initImageBitmaps() {
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
@@ -83,8 +85,6 @@ public class ThirdFragment extends Fragment {
                         + "\n\nBrand: " + ((MainActivity) act).getScannedList().get(i).getDataObj().products[0].brand
                         + "\n\nBarcode Number: " + ((MainActivity) act).getScannedList().get(i).getDataObj().products[0].barcode_number);
 
-
-                Log.d(TAG, "image barcode is "+ ((MainActivity) act).getScannedList().get(i).getDataObj().products[0].images[0]);
             }
         }
     }

@@ -6,10 +6,11 @@ import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.URL;
 
 
-public class EntryInfo {
+public class EntryInfo implements Serializable {
 
     private String data ="";
     private RootObject value;

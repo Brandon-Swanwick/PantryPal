@@ -4,26 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700"
+    android:background="@color/screenBackground"
     tools:context=".FirstFragment">
 
     <Button
         android:id="@+id/button_first"
         android:layout_width="250dp"
         android:layout_height="80dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="monospace"
         android:text="@string/F1_first_button_text"
+        android:textAlignment="viewStart"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        app:icon="@android:drawable/ic_menu_search"
+        app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.405" />
+        app:layout_constraintVertical_bias="0.333" />
 
     <Button
         android:id="@+id/button_second"
         android:layout_width="250dp"
         android:layout_height="80dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="monospace"
         android:text="@string/F1_second_button_text"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/white"
+        app:icon="@android:drawable/ic_menu_sort_by_size"
+        app:iconTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_first"
@@ -33,9 +46,17 @@
         android:id="@+id/button_third"
         android:layout_width="250dp"
         android:layout_height="80dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="monospace"
         android:text="@string/F1_third_button_text"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/white"
+        app:icon="?attr/actionModePasteDrawable"
+        app:iconTint="@android:color/darker_gray"
+        app:iconTintMode="src_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_second" />
+        app:layout_constraintTop_toBottomOf="@+id/button_second"
+        app:strokeColor="@android:color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

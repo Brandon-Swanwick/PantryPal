@@ -1,6 +1,7 @@
 package com.example.pantrypal;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -19,11 +20,11 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import productPack.EntryInfo;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
 
     private static final String TAG = "RecyclerViewAdapter";
-
 
     // mImages
     private ArrayList<String> productImages = new ArrayList<>();
@@ -34,14 +35,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     // context
     private Context mContext;
 
+    private Activity act;
+
     // info string
     private ArrayList<String> productInfoString = new ArrayList<>();
 
-    public RecyclerViewAdapter(Context mContext, ArrayList<String> productImages, ArrayList<String> productNames, ArrayList<String> productInfoString) {
+    public RecyclerViewAdapter(Context mContext, ArrayList<String> productImages, ArrayList<String> productNames, ArrayList<String> productInfoString , Activity act) {
         this.productImages = productImages;
         this.productNames = productNames;
         this.mContext = mContext;
         this.productInfoString = productInfoString;
+
     }
 
     @NonNull
@@ -69,16 +73,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Log.d(TAG, "onClick: clicked on " + productNames.get(position));
 
                 Toast.makeText(mContext, productNames.get(position),Toast.LENGTH_SHORT).show();
-
                 Intent intent = new Intent(mContext, DetailedActivity.class);
-                intent.putExtra("image_url",productImages.get(position));
-                intent.putExtra("image_name", productNames.get(position));
+                intent.putExtra("image_url", productImages.get(position));
                 intent.putExtra("entry_info", productInfoString.get(position));
                 mContext.startActivity(intent);
             }
         });
 
     }
+
 
     @Override
     public int getItemCount() {
