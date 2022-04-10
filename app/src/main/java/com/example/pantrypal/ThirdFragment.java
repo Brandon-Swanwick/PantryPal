@@ -49,8 +49,6 @@ public class ThirdFragment extends Fragment {
 
         productInfoString = new ArrayList<>();
 
-
-
         initImageBitmaps();
 
         recyclerView = view.findViewById(R.id.recycler_view);
@@ -70,7 +68,6 @@ public class ThirdFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-
     public void initImageBitmaps() {
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
@@ -81,9 +78,10 @@ public class ThirdFragment extends Fragment {
                 productImages.add(((MainActivity) act).getScannedList().get(i).getDataObj().products[0].images[0]);
 
 
-                productInfoString.add("Title: " +((MainActivity) act).getScannedList().get(i).getDataObj().products[0].title
+                productInfoString.add("Title: " + ((MainActivity) act).getScannedList().get(i).getDataObj().products[0].title
                         + "\n\nBrand: " + ((MainActivity) act).getScannedList().get(i).getDataObj().products[0].brand
-                        + "\n\nBarcode Number: " + ((MainActivity) act).getScannedList().get(i).getDataObj().products[0].barcode_number);
+                        + "\n\nStore: " + ((MainActivity) act).getScannedList().get(i).getDataObj().products[0].stores[0].name
+                        + "\n\nPrice: $" + ((MainActivity) act).getScannedList().get(i).getDataObj().products[0].stores[0].price);
 
             }
         }

@@ -12,7 +12,6 @@ import java.net.URL;
 
 public class EntryInfo implements Serializable {
 
-    private String data ="";
     private RootObject value;
 
     public EntryInfo(String apiCall) {
@@ -118,7 +117,7 @@ public class EntryInfo implements Serializable {
             public void run() {
 
                 try {
-                    String dataTemp = "{\n" +
+                    String dataTemp1 = "{\n" +
                             "    \"products\": [\n" +
                             "        {\n" +
                             "            \"barcode_number\": \"811660022826\",\n" +
@@ -227,6 +226,7 @@ public class EntryInfo implements Serializable {
                             "    ]\n" +
                             "}";
 
+
 //                    URL url = new URL(apiCall);
 //                    BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
 //                    String str = "";
@@ -235,11 +235,11 @@ public class EntryInfo implements Serializable {
 //                        data += str;
 //                    }
 //
-//                    Log.d("dataT", "1.__Imported List" + data);
+//                    Log.d("URL19", "URL is: " + url.toString());
 //                    br.close();
 
                     Gson g = new Gson();
-                    value = g.fromJson(dataTemp, RootObject.class);
+                    value = g.fromJson(dataTemp1, RootObject.class);
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
