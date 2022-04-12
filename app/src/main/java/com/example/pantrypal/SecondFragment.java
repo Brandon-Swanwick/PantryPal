@@ -48,17 +48,9 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.buttonFirst.setOnClickListener(view1 -> {
-//            Toast.makeText(getContext(),"You Clicked on home",Toast.LENGTH_SHORT).show();
-
             Activity act = getActivity();
             if (act instanceof MainActivity){
                 ((MainActivity) act).updateScannedList(tempList);
-                if (!tempList.isEmpty()){
-                    Toast.makeText(getContext(),"sent temp list to main",Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(getContext(),"sent no new list to main",Toast.LENGTH_SHORT).show();
-                }
             }
 
             NavHostFragment.findNavController(SecondFragment.this)
